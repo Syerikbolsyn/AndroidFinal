@@ -10,49 +10,58 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.exam.dummy.DummyContent
 
-/**
- * A fragment representing a list of Items.
- */
-class CountriesListFragment : Fragment() {
+class CountriesListFragment :  Fragment() {
+    private lateinit var textViewIn: TextView
+    private lateinit var textViewUs: TextView
 
-    private var columnCount = 1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
-    }
+    private lateinit var textViewAu: TextView
+    private lateinit var textViewRu: TextView
+    private lateinit var textViewFr: TextView
+    private lateinit var textViewGb: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
+        //Inflate the layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_countries, container, false)
+        textViewIn= rootView.findViewById(R.id.inD)
+        textViewUs= rootView.findViewById(R.id.usA)
+        textViewAu= rootView.findViewById(R.id.auS)
+        textViewRu= rootView.findViewById(R.id.ruS)
+        textViewFr= rootView.findViewById(R.id.frA)
+        textViewGb= rootView.findViewById(R.id.gbA)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyCountriesListRecyclerViewAdapter(DummyContent.ITEMS)
-            }
+        textViewIn.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "in"
+            view?.findNavController()?.navigate(action)
         }
-        return view
-    }
-
-    companion object {
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            CountriesListFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
+        textViewUs.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "us"
+            view?.findNavController()?.navigate(action)
+        }
+        textViewAu.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "au"
+            view?.findNavController()?.navigate(action)
+        }
+        textViewRu.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "ru"
+            view?.findNavController()?.navigate(action)
+        }
+        textViewFr.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "fr"
+            view?.findNavController()?.navigate(action)
+        }
+        textViewGb.setOnClickListener {
+            val action = CountriesFragmentDirections.actionCountryToCategory()
+            action.country = "gb"
+            view?.findNavController()?.navigate(action)
+        }
+        return rootView
     }
 }
