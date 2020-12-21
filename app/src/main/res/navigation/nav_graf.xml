@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graf"
+    app:startDestination="@id/newsListFragment2">
+    <fragment
+        android:id="@+id/newsListFragment2"
+        android:name="com.example.exam.NewsListFragment"
+        android:label="newslist"
+        tools:layout="@layout/newslist" >
+        <action
+            android:id="@+id/action_newsListFragment2_to_news2"
+            app:destination="@id/news2" />
+        <action
+            android:id="@+id/action_newsListFragment2_to_categoryListFragment2"
+            app:destination="@id/categoryListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/countriesListFragment"
+        android:name="com.example.exam.CountriesListFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" >
+        <action
+            android:id="@+id/action_countriesListFragment_to_categoryListFragment2"
+            app:destination="@id/categoryListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/news2"
+        android:name="com.example.exam.News"
+        android:label="News"
+        tools:layout="@layout/news_fragment">
+        <action
+            android:id="@+id/action_news2_to_newsListFragment2"
+            app:destination="@id/newsListFragment2" />
+        <action
+            android:id="@+id/action_news2_to_countriesListFragment"
+            app:destination="@id/countriesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryListFragment2"
+        android:name="com.example.exam.CategoryListFragment"
+        android:label="CategoryListFragment"
+        tools:layout="@layout/categorylist">
+        <action
+            android:id="@+id/action_categoryListFragment2_to_newsListFragment2"
+            app:destination="@id/newsListFragment2" />
+        <action
+            android:id="@+id/action_categoryListFragment2_to_countriesListFragment"
+            app:destination="@id/countriesListFragment" />
+    </fragment>
+</navigation>

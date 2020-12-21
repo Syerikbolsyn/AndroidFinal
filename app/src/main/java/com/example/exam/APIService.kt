@@ -6,16 +6,16 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("posts/")
-    fun getPosts(): Call<List<Post>>
+    fun getNews(): Call<List<News>>
 
     @GET("posts/{id}/")
-    fun getTodoById(@Path("id") postInt: Int): Call<Post>
-    //https://jsonplaceholder.typicode.com/comments?postId=​{id}
+    fun getTodoById(@Path("id") postInt: Int): Call<Category>
+    //https://saurav.tech/NewsAPI/top-headlines/category/{category}/{country}.json
     @Headers("Cache-Control: max-age=640000", "User-Agent: My-App-Name")
     @GET("comments/")
     fun getComentsByUserId(
-        @Query("userId") userId: Int): Call<List<Comment>>
+        @Query("userId") userId: Int): Call<List<Country>>
 
-    @GET("comments/")
-    fun getComments(): Call<List<Comment>>
+    @GET("news/")
+    fun getComments(): Call<List<Country>>
 }
